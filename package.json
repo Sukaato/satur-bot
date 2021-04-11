@@ -1,0 +1,36 @@
+{
+  "name": "satur-bot",
+  "version": "1.0.0",
+  "description": "Bot discord jouant des sons saturé aléatoirement",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/bot",
+    "build": "tsc",
+    "start:prod": "node dist/bot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sukaato/satur-bot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Sukaato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sukaato/satur-bot/issues"
+  },
+  "homepage": "https://github.com/Sukaato/satur-bot#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.0",
+    "discord.js": "^12.5.3",
+    "ffmpeg-static": "^4.3.0",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1"
+  }
+}

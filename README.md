@@ -1,2 +1,2 @@
 # satur-bot
-Bot discord jouant des sons saturé aléatoirement
+Place your musics in this directory
