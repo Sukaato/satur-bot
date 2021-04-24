@@ -3,11 +3,11 @@ import { readdir } from 'fs/promises';
 const client = new Client();
 import * as config from '../config.json';
 
+const baseMusicUrl = `${__dirname}/../../assets/musics`
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-
-  const interval = 5000;
-  console.log('interval:', parseMsToTime(interval));
+  console.log('interval:', parseMsToTime(config.interval));
 
   client.setImmediate(startUp, 500);
   client.setInterval(main, config.interval);
@@ -28,19 +28,20 @@ function canConnectToChannel(): boolean {
 
 function playAudio(voiceChannel: VoiceChannel): void {
   console.log(`Connect to the channel '${voiceChannel.name}'`);
-  voiceChannel.join().then(async connection => {
-    const files = await readdir(`${__dirname}/assets/musics`);
-    const sounds = files.filter(file => file !== 'README.md');
-    const audio = sounds[Math.floor(Math.random() * sounds.length)];
+  voiceChannel.join()
+    .then(async voice => {
+      const files = await readdir(baseMusicUrl);
+      const sounds = files.filter(file => file !== 'README.md');
+      const audio = sounds[Math.floor(Math.random() * sounds.length)];
 
-    connection
-      .play(`${__dirname}/assets/musics/${audio}`)
-      .on('start', () => console.log(`start playing audio: ${audio}`))
-      .on('error', console.error)
-      .on('finish', () => voiceChannel.leave())
-      .setVolume(config.volume);
-  })
-  .catch(console.error);
+      voice
+        .play(`${baseMusicUrl}/${audio}`)
+        .on('start', () => console.log(`start playing audio: ${audio}`))
+        .on('error', console.warn)
+        .on('finish', voiceChannel.leave)
+        .setVolume(config.volume);
+    })
+    .catch(console.warn);
 }
 
 function main() {

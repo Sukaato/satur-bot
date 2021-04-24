@@ -4,9 +4,8 @@
     "target": "es2019",
     "noImplicitAny": false,
     "sourceMap": true,
-    "outDir": "dist",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "rootDir": ".",
     "declaration": true,
     "importHelpers": true,
     "resolveJsonModule": true,
@@ -19,10 +18,7 @@
     ],
     "moduleResolution": "node"
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }

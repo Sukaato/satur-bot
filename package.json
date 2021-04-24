@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/bot",
     "build": "tsc",
-    "start:prod": "node dist/bot"
+    "start:prod": "node dist/src/bot"
   },
   "repository": {
     "type": "git",
